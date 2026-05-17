@@ -1,0 +1,19 @@
+datasets rappiplus:
+
+rappiplus_orders_raw.csv
+
+columnas:
+
+"id_pedido" "id_usuario" "fecha_hora_pedido" "pais" "dispositivo" "fuente_referencia" "nombre_producto" "categoria_producto" "cantidad" "precio_unitario" "monto_descuento" "monto_total"
+
+rappiplus_catalog.csv
+
+columnas:
+
+"nombre_producto" "categoria_producto" "costo_unitario" "proveedor"
+
+rappiplus_marketing_spend.csv
+
+columnas:
+
+"fecha" "país" "id_campana" "canal" "gasto"
