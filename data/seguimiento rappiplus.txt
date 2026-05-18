@@ -32,3 +32,31 @@ Paso 1: Preparación y calidad de datos con Python
 • Detectar inconsistencias.
 • Limpiar y estructurar datasets.
 • Generar un dataset listo para análisis.
+
+
+Se revisan los 3 datasets
+
+• Validar y convertir fechas al formato correcto
+• Revisar variables numéricas (sin negativos o ceros inválidos)
+• Verificar consistencia de montos
+• Eliminar duplicados
+• Revisar variables categóricas
+
+- orders:
+- cambiar:
+- - fecha_hora_pedido object to date
+- - cantidad float to int
+- - pais a estandarizar
+- marketing:
+- cambiar:
+- - date object to date
+
+Se asociará 'categoria_producto' a 'nombre_producto'.
+
+'pais', 'dispositivo', 'fuente_referencia', 'nombre_producto', 'categoria_producto' a 'unknown'
+
+'monto_descuento' a '0'
+
+Se eliminarán registros de 'cantidad', 'precio_unitario', 'monto_descuento' como NaN
+
+Cambiar nombre a 'id_campana' y asociar 'id_campaña' a 'canal'.
