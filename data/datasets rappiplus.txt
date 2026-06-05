@@ -1,4 +1,4 @@
-datasets rappiplus:
+datasets crudos rappiplus:
 
 rappiplus_orders_raw.csv
 
@@ -10,4 +10,14 @@ rappiplus_catalog.csv
 
 rappiplus_marketing_spend.csv
 
-['fecha', 'pais', 'id_campaña', 'canal', 'gasto']
+['fecha', 'pais', 'id_campana', 'canal', 'gasto']
+
+datasets limpios:
+
+ord['id_pedido', 'id_usuario', 'fecha_pedido', 'pais', 'dispositivo',
+       'fuente_referencia', 'nombre_producto', 'categoria_producto',
+       'cantidad', 'precio_unitario', 'monto_descuento', 'monto_total']
+
+ctl['nombre_producto', 'categoria_producto', 'costo_unitario', 'proveedor']
+
+mkt['fecha', 'pais', 'id_campana', 'canal', 'gasto']

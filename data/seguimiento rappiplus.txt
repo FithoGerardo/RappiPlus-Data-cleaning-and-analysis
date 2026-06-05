@@ -46,6 +46,7 @@ Se revisan los 3 datasets
 - cambiar:
 - - fecha_hora_pedido object to date
 - - cantidad float to int
+- - redondear a dos decimales
 - - pais a estandarizar
 - marketing:
 - cambiar:
@@ -53,10 +54,38 @@ Se revisan los 3 datasets
 
 Se asociará 'categoria_producto' a 'nombre_producto'.
 
+Verificar usuarios con más de un país para imputar los países nulos con los usuarios que ya tengan país registrado.
+
 'pais', 'dispositivo', 'fuente_referencia', 'nombre_producto', 'categoria_producto' a 'unknown'
 
 'monto_descuento' a '0'
 
 Se eliminarán registros de 'cantidad', 'precio_unitario', 'monto_descuento' como NaN
 
-Cambiar nombre a 'id_campana' y asociar 'id_campaña' a 'canal'.
+Se buscaron negativos y cambiaron a positivos por error de registro.
+
+Búsqueda de outliers en 'cantidad' con IQR. Registros eliminados.
+
+Cambiar nombre 'fecha_hora_pedido' a 'fecha_pedido'.
+
+Cambiar nombre 'id_campaña' a 'id_campana' y asociar 'id_campaña' a 'canal'.
+
+Paso 2. Análisis de rentabilidad del negocio con Python.
+
+• Cálculo de KPIs (ejemplo ingresos/revenue, costos, ganancias).
+• Identificación de segmentos rentables.
+
+Parte 1: Rentabilidad del negocio
+
+• ¿Cuál es el ingreso total (revenue)?
+• ¿Cuál es el costo total?
+• ¿Cuánto se ha invertido en marketing?
+• ¿El negocio es rentable? (calcular profit)
+
+Parte 2: Comportamiento de ventas
+
+• ¿Cuál es el ticket promedio por orden?
+• ¿Cuál es la cantidad promedio de productos por orden?
+• ¿Cuál es el producto más vendido?
+• ¿Cuánto se ha gastado en marketing por canal?
+
