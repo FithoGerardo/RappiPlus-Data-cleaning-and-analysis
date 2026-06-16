@@ -186,3 +186,24 @@ Objetivo: Evaluar si la modificación en la UI del checkout impacta la tasa de c
 2. Plantear la hipótesis estadística
 3. Aplicar el test estadístico adecuado
 4. Interpretar el resultado
+
+Resultados:
+
+variante usuarios conversiones tasa_conversion
+control 4965 779 15.689829
+tratamiento 5035 820 16.285998
+
+Conversiones:
+variante convirtio
+control 779
+tratamiento 820
+
+Usuarios:
+variante convirtio
+control 4965
+tratamiento 5035
+
+Estadístico Z: -0.8133
+P-value: 0.4161
+
+No se rechaza H₀. No hay evidencia estadísticamente significativa para afirmar que la nueva UI impacta la conversión.

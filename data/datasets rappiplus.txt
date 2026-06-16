@@ -21,3 +21,11 @@ ord['id_pedido', 'id_usuario', 'fecha_pedido', 'pais', 'dispositivo',
 ctl['nombre_producto', 'categoria_producto', 'costo_unitario', 'proveedor']
 
 mkt['fecha', 'pais', 'id_campana', 'canal', 'gasto']
+
+events['id_usuario', 'id_sesion', 'nombre_evento', 'timestamp_evento', 'pais', 'dispositivo', 'fuente_referencia', 'categoria_producto']
+
+users['id_usuario', 'fecha_registro', 'país', 'dispositivo', 'tipo_plan']
+
+user_activity['id_usuario', 'fecha_actividad', 'dias_despues_registro', 'activo']
+
+emt['id_usuario', 'variante', 'convirtio', 'dispositivo', 'pais', 'duracion_sesion', 'timestamp']
