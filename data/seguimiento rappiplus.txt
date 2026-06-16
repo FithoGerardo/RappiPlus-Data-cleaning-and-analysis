@@ -82,6 +82,12 @@ Parte 1: Rentabilidad del negocio
 • ¿Cuánto se ha invertido en marketing?
 • ¿El negocio es rentable? (calcular profit)
 
+• Revenue Total: $9,623,428.86
+• Costo Total: $3,828,919.61
+• Inversión Marketing: $2,871,843.53
+• Profit: $2,922,665.72
+• Margen: 30.37%
+
 Parte 2: Comportamiento de ventas
 
 • ¿Cuál es el ticket promedio por orden?
@@ -89,3 +95,94 @@ Parte 2: Comportamiento de ventas
 • ¿Cuál es el producto más vendido?
 • ¿Cuánto se ha gastado en marketing por canal?
 
+Ticket promedio: $385.86
+Cantidad promedio por orden: 1.50
+
+nombre_producto		cantidad
+Vacuum-Pro-Black	6284
+Blender-XL-Red		6279
+Jacket-Winter-M		6256
+Sneakers-Urban-42	6172
+Laptop-Gaming-16GB	4198
+Tablet-Standard-64GB	4153
+Phone-Pro-128GB	4145
+unknown	45
+
+Producto más vendido: Vacuum-Pro-Black
+Unidades vendidas: 6284
+
+Gasto por canal:
+canal		gasto	
+social		976818.37
+organic		972650.96
+paid_search	922374.20
+
+Paso 3: Entender dónde se pierden los usuarios (funnel de conversión)
+
+Objetivo: Analizar el comportamiento de los usuarios para identificar en qué etapa del proceso se pierden.
+
+Conexión a la base de datos: Se ejecuta la línea de configuración para conectar con la base de datos y aplicar consultas SQL en la tabla events.
+
+Parte 1: Construcción del funnel
+
+• ¿Cuántos usuarios llegan a cada etapa del funnel?
+• Se calcula el número de usuarios únicos por nombre_evento
+• Se ordenan los eventos según el flujo del usuario
+
+Parte 2: Análisis de conversión
+
+• Se calcula la tasa de conversión entre cada paso del funnel
+• Se identifica en qué etapa se pierde la mayor cantidad de usuarios
+• ¿Cuál es la tasa de conversión final?
+
+	nombre_evento		usuarios_unicos
+0	first_visit		7796
+1	add_to_cart		7634
+2	select_item		7582
+3	begin_checkout		7208
+4	add_payment_info	6250
+5	purchase		6240
+
+first_to_cart	cart_to_select	select_to_checkout	checkout_to_payment	payment_to_purchase	final_conversion
+97.92	99.32	95.07	86.71	99.84	80.04
+
+Paso 4: Evaluar si los usuarios regresan (retención por cohortes)
+Objetivo: Analizar la retención de usuarios para entender si regresan después de registrarse.
+
+Tablas:
+
+users
+user_activity
+
+Se identifica la cohorte de cada usuario según el mes de registro.
+
+Se calcula la retención semanal: cuántos usuarios se mantienen activos en cada semana desde su registro.
+
+retenido_w1: usuarios activos en la semana 1
+retenido_w2: usuarios activos en la semana 2
+retenido_w3: usuarios activos en la semana 3
+
+Se calcula el porcentaje de retención para cada semana, dividiendo los usuarios retenidos entre los clientes iniciales de la cohorte:
+
+semana_1: porcentaje de usuarios retenidos en la semana 1
+semana_2: porcentaje de usuarios retenidos en la semana 2
+semana_3: porcentaje de usuarios retenidos en la semana 3
+
+Se revisa que la columna de fecha esté en formato correcto (DATE).
+Se realiza la conversión usando: CAST(fecha_registro AS DATE)
+
+cohorte	usuarios_iniciales	retenido_w1	semana_1	retenido_w2	semana_2	retenido_w3	semana_3
+2025-01	1627	697	42.84	668	41.06	656	40.32
+2025-02	1444	611	42.31	609	42.17	635	43.98
+2025-03	1636	677	41.38	705	43.09	690	42.18
+2025-04	1606	680	42.34	697	43.40	663	41.28
+2025-05	1687	695	41.20	676	40.07	706	41.85
+
+Paso 5: Validar si los cambios generan impacto (test estadístico)
+Objetivo: Evaluar si la modificación en la UI del checkout impacta la tasa de conversión de compra.
+
+1. Analizar el dataset experiment_checkout_ui.csv para identificar la métrica principal conversion.
+- La métrica conversion es 1 si el usuario completó la compra, 0 si no.
+2. Plantear la hipótesis estadística
+3. Aplicar el test estadístico adecuado
+4. Interpretar el resultado
